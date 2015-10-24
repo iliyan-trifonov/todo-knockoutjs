@@ -1,0 +1,25 @@
+{
+  "name": "todo-knockoutjs",
+  "version": "1.0.0",
+  "authors": [
+    "Iliyan Trifonov"
+  ],
+  "description": "TODO with Knockout.js",
+  "main": "src/index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "https://iliyan-trifonov.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "~3.3.0",
+    "jquery": "~2.1.4"
+  }
+}

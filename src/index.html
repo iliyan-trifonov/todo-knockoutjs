@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>TODO with Knockout.js</title>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+
+    <body>
+        <header class="page-header">
+            <h1>TODO with Knockout.js</h1>
+        </header>
+
+        <main>
+
+            <div class="todo">
+                <div class="todo-add">
+                    <input type="text" placeholder="Add your todo text here.."
+                           data-bind="textInput: text, event: {keyup: keyUp}" />
+                    <button data-bind="click: addTodo">Add</button>
+                </div>
+
+                <div class="todo-lines" data-bind="foreach: todos">
+                    <div class="todo-line">
+                        <label>
+                            <input type="checkbox" data-bind="checked: completed" />
+                            <span data-bind="text: text"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="todo-btns">
+                    <button data-bind="click: deleteCompleted">Delete completed</button>
+                </div>
+            </div>
+
+        </main>
+
+        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="vendor/knockout/dist/knockout.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

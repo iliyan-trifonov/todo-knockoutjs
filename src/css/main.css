@@ -1,0 +1,46 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.page-header {
+    padding: 5px;
+    background: linear-gradient(#000, #ff0000);
+    margin-bottom: 10px;
+}
+
+.page-header h1 {
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+.todo {
+    border: 1px dashed red;
+    width: 600px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.todo-add input[type=text] {
+    width: 300px;
+}
+
+.todo-lines {
+    margin: 15px;
+}
+
+.todo-line {
+    margin: 5px;
+}
+
+button {
+    color: white;
+    background-color: deepskyblue;
+    border: 1px solid white;
+    padding: 5px;
+    text-transform: uppercase;
+}
