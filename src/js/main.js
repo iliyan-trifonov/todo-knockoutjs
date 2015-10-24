@@ -1,4 +1,4 @@
-(function (ko, $) {
+(function (ko, $, window) {
     'use strict';
 
     var TODO = function (text) {
@@ -25,6 +25,8 @@
             var todo = new TODO(this.text());
             this.todos.push(todo);
             this.text('');
+
+            storage.save('data', this.todos());
         };
 
         this.keyUp = function (d, e) {
@@ -37,10 +39,31 @@
             this.todos(ko.utils.arrayFilter(this.todos(), function (todo) {
                 return !todo.completed;
             }));
+            storage.save('data', this.todos());
         };
     };
 
-    var initialData = [
+    var Storage = function () {
+    };
+
+    Storage.prototype.save = function (key, value) {
+        return window.localStorage.setItem(key, JSON.stringify(value));
+    };
+
+    Storage.prototype.get = function (key) {
+        var item = window.localStorage.getItem(key);
+        if (!item) {
+            return null;
+        } else {
+            return JSON.parse(item);
+        }
+    };
+
+    /////
+
+    var storage = new Storage();
+
+    var initialData = storage.get('data') || [
         {text: 'sample TODO 1', completed: false},
         {text: 'sample TODO 2', completed: true},
         {text: 'sample TODO 3', completed: false}
@@ -48,4 +71,4 @@
 
     ko.applyBindings(new TODOS(initialData));
 
-})(ko, $);
+})(ko, $, window);
