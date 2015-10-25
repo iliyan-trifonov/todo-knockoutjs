@@ -2,12 +2,14 @@
 TODO app created with [Knockout.js](http://knockoutjs.com/)/[jQuery](https://jquery.com/).
 You can add new items, set them as completed, delete them.
 
+[See it in action here](https://todo-knockoutjs.iliyan-trifonov.com "TODO with Knockout.js").
+
 ### Install
 Go to the root of the app and run:
 
     bower install
     
-This will install Knockout.js and jQuery in [src/vendor](src/vendor).
+This will install Knockout.js and jQuery in src/vendor.
 
 ### Run
 Open [src/index.html](src/index.html) in your browser. You need a modern browser supporting the local storage.
