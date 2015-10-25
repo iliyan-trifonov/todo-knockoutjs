@@ -2,8 +2,11 @@
     'use strict';
 
     var TODO = function (text) {
-        this.text = text || '';
-        this.completed = false;
+        if (typeof text === 'undefined') {
+            throw new Error('Invalid text given for the new TODO!');
+        }
+        this.text = text;
+        this.completed = ko.observable(false);
     };
 
     var TODOS = function (todos) {
@@ -13,7 +16,7 @@
 
         todos.forEach(function (data) {
             var todo = new TODO(data.text);
-            todo.completed = data.completed;
+            todo.completed(data.completed);
             this.todos.push(todo);
         }, this);
 
@@ -26,7 +29,11 @@
             this.todos.push(todo);
             this.text('');
 
-            storage.save('data', this.todos());
+            this.saveTodos();
+        };
+
+        this.saveTodos = function () {
+            storage.save('data', ko.toJS(this.todos()));
         };
 
         this.keyUp = function (d, e) {
@@ -35,11 +42,15 @@
             }
         };
 
+        this.checkChanged = function (d, e) {
+            this.saveTodos();
+        }.bind(this);
+
         this.deleteCompleted = function () {
             this.todos(ko.utils.arrayFilter(this.todos(), function (todo) {
-                return !todo.completed;
+                return !todo.completed();
             }));
-            storage.save('data', this.todos());
+            this.saveTodos();
         };
     };
 

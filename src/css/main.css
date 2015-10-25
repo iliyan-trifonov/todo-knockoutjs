@@ -37,6 +37,11 @@ body {
     margin: 5px;
 }
 
+.todo-line.completed span {
+    text-decoration: line-through;
+}
+
+
 button {
     color: white;
     background-color: deepskyblue;

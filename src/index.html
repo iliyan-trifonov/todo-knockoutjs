@@ -21,9 +21,9 @@
                 </div>
 
                 <div class="todo-lines" data-bind="foreach: todos">
-                    <div class="todo-line">
+                    <div class="todo-line" data-bind="css: {completed: completed}">
                         <label>
-                            <input type="checkbox" data-bind="checked: completed" />
+                            <input type="checkbox" data-bind="checked: completed, event: {change: $root.checkChanged}" />
                             <span data-bind="text: text"></span>
                         </label>
                     </div>
